@@ -30,10 +30,12 @@ export const NSE_SYMBOLS_CACHE = {
 
 export function determineExchange(symbolInput) {
   const symbol = symbolInput.toUpperCase().trim();
+  if (symbol.startsWith('^')) return [symbol, '']; // ADD THIS LINE
   if (symbol.endsWith('.NS')) return [symbol.slice(0, -3), '.NS'];
   if (symbol.endsWith('.BO')) return [symbol.slice(0, -3), '.BO'];
   return [symbol, '.NS'];
 }
+
 
 const isEmpty = (v) => v === null || v === undefined || v === 'N/A';
 
